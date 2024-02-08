@@ -1,0 +1,31 @@
+/* Styles here */
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+#search-box {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+#country-info {
+  margin-bottom: 20px;
+}
+
+#country-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.country-item {
+  margin-bottom: 10px;
+}
+
+.country-item img {
+  width: 30px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
