@@ -1,9 +1,10 @@
-const API_URL = `https://restcountries.com/v3.1/name/`;  // Upewnij się, że API jest zdefiniowane
-const fields = `fields=name,capital,population,flags,languages`;
+// funkcja fetchCountries.js
+// Upewnij się, że API jest zdefiniowane
+const URL = 'https://restcountries.com/v3.1/name/';
+const FIELDS = 'fields=name,capital,population,flags,languages';
 
-// Funkcja do pobierania danych o kraju
 export async function fetchCountries(name) {
-  const response = await fetch(`${API_URL}${name}?${fields}`);
+  const response = await fetch(`${URL}${name}?${FIELDS}`);
   if (response.ok) {
     return await response.json();
   } else {

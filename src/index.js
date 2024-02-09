@@ -5,7 +5,7 @@ import Notiflix from 'notiflix';
 import './styles.css'
 
 // Stałe
-const API_URL = 'https://restcountries.com/v3.1/name/{name}';
+//const API_URL = 'https://restcountries.com/v3.1/name/';
 const searchBox = document.querySelector('#search-box');
 const countryList = document.querySelector('#country-list');
 const countryInfo = document.querySelector('#country-info');
@@ -48,8 +48,8 @@ function showCountryInfo(country) {
   card.appendChild(flag);
 
   // Dodanie nazwy kraju
-  const name = document.createElement('h2');
-  name.classList.add('country-name');
+  const name = document.createElement('h1');
+  name.classList.add(`<b>${'country-name'}</b>`);
   name.textContent = country.name.official;
   card.appendChild(name);
 
@@ -58,27 +58,31 @@ function showCountryInfo(country) {
   details.classList.add('country-details');
 
   // Dodanie stolicy
+  
   const capital = document.createElement('li');
-  capital.innerHTML = `<span>Capital:</span> ${country.capital}`;
+  capital.innerHTML = `<p><b>Capital: </b>${country.capital}</p>`;
   details.appendChild(capital);
+  
 
   // Dodanie populacji
   const population = document.createElement('li');
-  population.innerHTML = `<span>Population:</span> ${country.population}`;
+  population.innerHTML = `<span>Population: <span>${country.population}`;
   details.appendChild(population);
 
   // Dodanie języków
   const languages = document.createElement('li');
-  languages.innerHTML = `<span>Languages:</span> ${country.languages.map(lang => lang.name).join(', ')}`;
+  languages.innerHTML = `<span>Languages: </span>${country.languages.map(lang => lang.name).join(', ')}`;
   details.appendChild(languages);
 
-  // Dodanie sekcji detali do karty
-  card.appendChild(details);
 
-  // Dodanie karty do kontenera
-  countryInfo.appendChild(card);
+  // // Dodanie sekcji detali do karty
+  // card.appendChild(details);
+
+  // // Dodanie karty do kontenera
+  // countryInfo.appendChild(card);
 
 }
+
 
 // Obsługa zdarzenia input
 searchBox.addEventListener('input', debounce(async () => {
@@ -101,3 +105,5 @@ searchBox.addEventListener('input', debounce(async () => {
     Notiflix.Notify.failure('Oops, there is no country with that name');
   }
 }, 300));
+
+//console.log(countries.country.name.official);
