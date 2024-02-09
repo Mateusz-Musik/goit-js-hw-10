@@ -5,11 +5,9 @@ import Notiflix from 'notiflix';
 import './styles.css'
 
 // Stałe
-const API_URL = 'https://restcountries.com/v3.1/name/{name}';
 const searchBox = document.querySelector('#search-box');
 const countryList = document.querySelector('#country-list');
 const countryInfo = document.querySelector('#country-info');
-
 
 // Funkcja do wyświetlania listy krajów
 function showCountryList(countries) {
