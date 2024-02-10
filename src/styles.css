@@ -12,7 +12,7 @@ body {
 }
 
 #search-box {
-  font: inherit;
+  /*font: inherit;*/ /* czcionka taka jak w body (parent) */
   font-size: medium;
   padding: 6px;
   max-width: 600px;
@@ -38,8 +38,8 @@ body {
 }
 
 .country-name {
-  font-size: 40px; /* Rozmiar czcionki */
-  margin-bottom: 10px;
+  font-size: 30px; /* Rozmiar czcionki */
+  margin-bottom: 10px; /* stały dolny margines*/
   margin: 2px 20px;
 }
 

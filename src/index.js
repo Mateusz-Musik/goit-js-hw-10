@@ -2,14 +2,11 @@
 import { fetchCountries } from './fetchCountries';
 import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
-import './styles.css'
 
 // Stałe
-//const API_URL = 'https://restcountries.com/v3.1/name/';
 const searchBox = document.querySelector('#search-box');
 const countryList = document.querySelector('#country-list');
 const countryInfo = document.querySelector('#country-info');
-
 
 // Funkcja do wyświetlania listy krajów
 function showCountryList(countries) {
@@ -69,7 +66,7 @@ const showCountryInfo = function showCountryInfo(country) {
 
   // Dodanie języków
   const languages = document.createElement('li');
-  languages.innerHTML = `<span>Languages: </span>${Object.values(country.languages).join(', ')}`; //poprawiony
+  languages.innerHTML = `<span>Languages: </span>${Object.values(country.languages).join(', ')}`;
   details.appendChild(languages);
 
   // Dodanie sekcji detali do karty
@@ -77,8 +74,6 @@ const showCountryInfo = function showCountryInfo(country) {
 
   // Dodanie karty do kontenera
   countryInfo.appendChild(card);
-
-  // console.log(country.languages); //dodany
 }
 
 // Obsługa zdarzenia input
