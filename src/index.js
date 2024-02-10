@@ -35,7 +35,7 @@ function showCountryList(countries) {
 }
 
 // Funkcja do wyświetlania informacji o kraju
-function showCountryInfo(country) {
+const showCountryInfo = function showCountryInfo(country) {
   countryInfo.textContent = ''; // Wyczyść istniejącą zawartość
   const card = document.createElement('div');
   card.classList.add('country-info-card');
@@ -58,11 +58,9 @@ function showCountryInfo(country) {
   details.classList.add('country-details');
 
   // Dodanie stolicy
-  
   const capital = document.createElement('li');
-  capital.innerHTML = `<p><b>Capital: </b>${country.capital}</p>`;
+  capital.innerHTML = `<span>Capital: </span>${country.capital}`;
   details.appendChild(capital);
-  
 
   // Dodanie populacji
   const population = document.createElement('li');
@@ -71,18 +69,17 @@ function showCountryInfo(country) {
 
   // Dodanie języków
   const languages = document.createElement('li');
-  languages.innerHTML = `<span>Languages: </span>${country.languages.map(lang => lang.name).join(', ')}`;
+  languages.innerHTML = `<span>Languages: </span>${Object.values(country.languages).join(', ')}`; //poprawiony
   details.appendChild(languages);
 
+  // Dodanie sekcji detali do karty
+  card.appendChild(details);
 
-  // // Dodanie sekcji detali do karty
-  // card.appendChild(details);
+  // Dodanie karty do kontenera
+  countryInfo.appendChild(card);
 
-  // // Dodanie karty do kontenera
-  // countryInfo.appendChild(card);
-
+  // console.log(country.languages); //dodany
 }
-
 
 // Obsługa zdarzenia input
 searchBox.addEventListener('input', debounce(async () => {
@@ -94,7 +91,7 @@ searchBox.addEventListener('input', debounce(async () => {
   }
   try {
     const countries = await fetchCountries(name);
-    if (countries.length === 10) {
+    if (countries.length === 1) {
       showCountryInfo(countries[0]);
       countryList.textContent = '';
     } else if (countries.length > 1) {
@@ -105,5 +102,3 @@ searchBox.addEventListener('input', debounce(async () => {
     Notiflix.Notify.failure('Oops, there is no country with that name');
   }
 }, 300));
-
-//console.log(countries.country.name.official);
