@@ -7,10 +7,17 @@ import Notiflix from 'notiflix';
 const searchBox = document.querySelector('#search-box');
 const countryList = document.querySelector('#country-list');
 const countryInfo = document.querySelector('#country-info');
+const container = document.querySelector('.container'); // Container
+
+// Funkcja czyszcząca zawartość container
+function clearContainer() {
+  countryList.textContent = '';
+  countryInfo.textContent = '';
+}
 
 // Funkcja do wyświetlania listy krajów
 function showCountryList(countries) {
-  countryList.textContent = ''; // Wyczyść istniejącą zawartość
+  clearContainer(); // Wyczyść istniejącą zawartość
   if (countries.length > 10) {
     Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
     return;
@@ -20,11 +27,11 @@ function showCountryList(countries) {
     listItem.classList.add('country-list-item');
     const flag = document.createElement('img');
     flag.src = country.flags.svg;
-    flag.alt = `${country.name.official} flag`;
+    flag.alt = `${country.name.common} flag`;
     flag.classList.add('country-flag');
-    const name = document.createElement('span');
+    const name = document.createElement('h1');
     name.classList.add('country-name');
-    name.textContent = country.name.official;
+    name.textContent = country.name.common;
     listItem.appendChild(flag);
     listItem.appendChild(name);
     countryList.appendChild(listItem);
@@ -33,21 +40,21 @@ function showCountryList(countries) {
 
 // Funkcja do wyświetlania informacji o kraju
 const showCountryInfo = function showCountryInfo(country) {
-  countryInfo.textContent = ''; // Wyczyść istniejącą zawartość
+  clearContainer(); // Wyczyść istniejącą zawartość
   const card = document.createElement('div');
   card.classList.add('country-info-card');
 
   // Dodanie flagi
   const flag = document.createElement('img');
   flag.src = country.flags.svg;
-  flag.alt = `${country.name.official} flag`;
+  flag.alt = `${country.name.common} flag`;
   flag.classList.add('country-flag');
   card.appendChild(flag);
 
   // Dodanie nazwy kraju
-  const name = document.createElement('h1');
-  name.classList.add(`<b>${'country-name'}</b>`);
-  name.textContent = country.name.official;
+  const name = document.createElement('span');
+  name.classList.add(`${'country-name'}`);
+  name.textContent = country.name.common;
   card.appendChild(name);
 
   // Dodanie sekcji z detalami
