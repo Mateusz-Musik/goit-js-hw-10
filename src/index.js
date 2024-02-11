@@ -11,8 +11,8 @@ const container = document.querySelector('.container'); // Container
 
 // Funkcja czyszcząca zawartość container
 function clearContainer() {
-  countryList.textContent = '';
-  countryInfo.textContent = '';
+  countryList.innerHTML = '';
+  countryInfo.innerHTML = '';
 }
 
 // Funkcja do wyświetlania listy krajów
@@ -29,7 +29,7 @@ function showCountryList(countries) {
     flag.src = country.flags.svg;
     flag.alt = `${country.name.common} flag`;
     flag.classList.add('country-flag');
-    const name = document.createElement('h1');
+    const name = document.createElement('h1'); 
     name.classList.add('country-name');
     name.textContent = country.name.common;
     listItem.appendChild(flag);
@@ -52,7 +52,7 @@ const showCountryInfo = function showCountryInfo(country) {
   card.appendChild(flag);
 
   // Dodanie nazwy kraju
-  const name = document.createElement('span');
+  const name = document.createElement('span'); 
   name.classList.add(`${'country-name'}`);
   name.textContent = country.name.common;
   card.appendChild(name);
@@ -87,8 +87,6 @@ const showCountryInfo = function showCountryInfo(country) {
 searchBox.addEventListener('input', debounce(async () => {
   const name = searchBox.value.trim();
   if (!name) {
-    countryList.textContent = '';
-    countryInfo.textContent = '';
     return;
   }
   try {
@@ -101,6 +99,7 @@ searchBox.addEventListener('input', debounce(async () => {
       countryInfo.textContent = '';
     }
   } catch (error) {
+    clearContainer();
     Notiflix.Notify.failure('Oops, there is no country with that name');
   }
 }, 300));

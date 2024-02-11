@@ -19,8 +19,8 @@ body {
 }
 
 .country-flag {
-  max-width: 40px;
-  max-height: auto;
+  max-width: auto;
+  max-height: 25px;
   margin-right: 10px;
 }
 
@@ -36,7 +36,6 @@ body {
 
 .country-name {
   font-size: 30px; /* Rozmiar czcionki */
-  margin-bottom: 10px; /* stały dolny margines*/
 }
 
 .country-info-item {
